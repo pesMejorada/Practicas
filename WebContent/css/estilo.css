@@ -1,0 +1,61 @@
+@CHARSET "ISO-8859-1";
+ ul { list-style:none;
+  }
+  li{
+    display:inline;
+    margin-left: 15px;
+    border-bottom: 2px dotted #0055F9;
+    padding:1px;
+  }
+ input{
+    color:green;
+    text-decoration: none;
+ }
+ .botones{
+       background-color:#0055F9;
+       color: white;
+       font-weight: normal;
+       font-size:1em;
+      font-family:Tahoma;
+      padding: 3px;
+      border:1px white dotted;
+      border-left:#0055AA 1px dotted;
+      border-bottom:#0055AA 1px dotted;
+      border-radius:6px;
+ 
+ }
+  body{
+      width:980px;
+      border: 2px dotted #0055F9;
+      margin: 0 auto;
+      background-color: #97CFF9;
+      text-align:left;
+      font-size:11px;
+      font-family: Tahoma, Georgia, Arial;
+      padding: 10px;
+   }
+   h1{font-size:14px;
+        font-weight: bold;}
+   a{
+     font-family: Tahoma;
+     font-size:11px;
+   }
+  a:link{
+  text-decoration: none;
+  }
+   a:hover{
+       font-size:12px;
+  }
+  a:visited{
+   color:red;
+    }
+    a:active{
+       color:green;
+    }
+  td, th{
+      border: 2px dotted blue;
+      padding:5px;
+      margin-left:20px;
+      
+    }
+   
