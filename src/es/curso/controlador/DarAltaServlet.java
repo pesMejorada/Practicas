@@ -1,4 +1,4 @@
-package es.concesionario.controladores;
+package es.concesionario.controlador;
 
 import java.io.IOException;
 import java.util.ArrayList;
