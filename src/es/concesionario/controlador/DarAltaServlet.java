@@ -1,7 +1,6 @@
 package es.concesionario.controlador;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import es.concesionario.modelo.Coche;
 import es.concesionario.modelo.Negocio;
 
+
+
+
 /**
  * Servlet implementation class DarAltaServlet
  */
@@ -23,96 +25,48 @@ public class DarAltaServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-	
-	/* Constructor por defecto */
     public DarAltaServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    
-    /* Método doGet */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    /* 1 Recuperar los datos de la URL */
-   	/* 2 Adaptarlos si es necesario al tipo de datos del modelo*/
-    
-    // recibe un String, devuelve un String
-    String matricula = request.getParameter("matricula"); 
-    
-    // recibe un String, devuelve un String
-    String marca = request.getParameter("marca"); 
-    
-    // recibe un String, devuelve un String
-    String modelo = request.getParameter("modelo"); 
-    
-   // recibe un String, devuelve un String
-    String color = request.getParameter("color"); 
-    
-    // recibe un String, le damos la vuelta para convertirlo en un entero con "Integer.parseInt("	
-    int numcaballos = Integer.parseInt(request.getParameter("numcaballos")); 
- 		
-    
-    // si en el html la "caja de chequeo" no está checheado por defecto
- 	// nos puede fallar al ejecutar. Tenemos que preguntar si el campo
- 	// "trabaja" está viajando en la URL (si la chequearon)
- 	
-    String tienemarchas= request.getParameter("marchas");
-	boolean marchas=true;
-	// true-> si;   false-> no
-	if(tienemarchas.equals("true")){
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String matricula=request.getParameter("matricula");
+		String marca=request.getParameter("marca");
+		String modelo=request.getParameter("modelo");
+		String color=request.getParameter("color");
+		int numCaballos=Integer.parseInt(request.getParameter("numCaballos"));
+		String marcha=request.getParameter("marchas");
+		boolean marchas;
+		if(marcha.equals("marchasSi")){
 			marchas=true;
-	}
-	else{
-	        marchas=false;
-	}
- 	
- 	/* 3 Pasarle los datos recuperados a la capa Negocio */
-    
-    //kk
-    
-    String darAlta=request.getParameter("darAlta");
-		   
-	Negocio negocio = new Negocio();
-	String mensajeDoGet=negocio.darAlta(matricula, marca, modelo, color, numcaballos, marchas);
-	   
-	// llamamos al método "darAlta" dentro de negocio.java
-	// negocio.darAlta es un metodo String que recibe "matricula, marca, modelo, color, numcaballos, marchas"
-	// y devuelve un String "msg" que no tiene por qué 
-	// llamarse igual que nuestra variable mensajeDoGet
-    
-	if(darAlta==null)// si ha fallado el alta
-	{
-	  // meter el mensaje en el request
-	  request.setAttribute("mensajeVistaMensajeJsp", mensajeDoGet);
-	   
-  	  //redirigir a la vista el mensaje
-	
-	  RequestDispatcher rd=request.getRequestDispatcher("vistaMensaje.jsp");
-	  rd.forward(request, response);
-	  
-	}else{// si el alta ha ido bien
-      
-		// además de darlo de alta en la BBDD 
-		// muestro todos los coches...
-      
-		//... o redirigir a la vista o consulta "mostrarTodos"
-		ArrayList<Coche> coches=negocio.consultarTodos();
-	
-		// meter el arrayList en el request
-		request.setAttribute("listado", coches);
-		// redirigir al código jsp "mostrarTodos"
+		}else{
+			marchas=false;
+		}
+		Negocio negocio= new Negocio();
+		int id=negocio.DarAlta(matricula,marca,modelo,color,numCaballos,marchas);
+		Coche e=negocio.consultarUno(id);
+		request.setAttribute("coche",e);
+		//redirigir a la vistaIndividual
 		RequestDispatcher rd;
-		rd=request.getRequestDispatcher("mostrarTodos.jsp");
+		rd= request.getRequestDispatcher("vistaIndividual.jsp");
 		rd.forward(request, response);
-        }
-    }
+	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
-
+	
 }
+		
+		
+	     
+		
+	
+

@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import es.concesionario.modelo.Coche;
 import es.concesionario.modelo.Negocio;
 
+
+
 /**
- * Servlet implementation class ConsultarMatriculaServlet
+ * Servlet implementation class ConsularServlet
  */
 @WebServlet("/ConsultarMatricula")
 public class ConsultarMatriculaServlet extends HttpServlet {
@@ -32,21 +34,19 @@ public class ConsultarMatriculaServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String matricula=request.getParameter("matriculaCoche");
-		// invocar al Negocio
-		Negocio negocio=new Negocio();
-		// ArrayList<Coche> coches=negocio.consultarMatricula();
-		ArrayList<Coche> coches=negocio.consultarMatricula(matricula);
-				
-		// meter el arrayList en el request
-		request.setAttribute("listado", coches);
-		// redirigir al código jsp "mostrarTodos"
-		RequestDispatcher rd;
-		rd=request.getRequestDispatcher("mostrarTodos.jsp");
-		rd.forward(request, response);
+		String matricula= request.getParameter("matricula");
+		   
+	    Negocio negocio = new Negocio();
+	    ArrayList<Coche> coche = negocio.consultarMatricula(matricula);
+	    
+	    // meter el coche en el request.. uso el metodo setAttribute
+	    request.setAttribute("listado", coche);
+	    // Redirigir hacia la pagina jsp que muestra los datos del coche.
+	    RequestDispatcher rd;
+	    rd=request.getRequestDispatcher("mostrarTodos.jsp");
+	    rd.forward(request, response);
+		
 	}
-
-
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

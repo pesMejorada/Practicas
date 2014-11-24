@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import es.concesionario.modelo.Coche;
 import es.concesionario.modelo.Negocio;
 
+
+
 /**
  * Servlet implementation class ConsultarUnoServlet
  */
@@ -31,21 +33,20 @@ public class ConsultarUnoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// recuperamos el Id del request
-		int id= Integer.parseInt(request.getParameter("idCoche"));
-		Negocio negocio = new Negocio();
-		Coche coche = negocio.consultarUno(id);
-		
-		//Negocio ha devuelto un coche con todos sus datos 
-		
-		//meter el coche en el request. uso el metodo setAttribute
-		request.setAttribute("coche", coche);
-		
-		//redirigir hacia la página.jsp que muestra los datos del coche
-		RequestDispatcher rd;
-		rd=request.getRequestDispatcher("vistaIndividual.jsp");
-		rd.forward(request, response);
-	}
+		int id = Integer.parseInt(request.getParameter("id"));
+		   
+	    Negocio negocio = new Negocio();
+	    Coche coche =negocio.consultarUno(id);
+	    
+	    // meter el pais en el request.. uso el metodo setAttribute
+	    request.setAttribute("coche", coche);
+	    // Redirigir hacia la pagina jsp que muestra los datos del pais.
+	    RequestDispatcher rd;
+	    rd=request.getRequestDispatcher("vistaIndividual.jsp");
+	    rd.forward(request, response);
+		}
+
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
