@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="css/estilo.css"/>
 </head>
 <body>
+ <h1>CONCESIONARIO SUCOCHE</h1>
      <!--  Recuperar los datos del request.        -->
     <%
         ArrayList<Coche> temporal =(ArrayList<Coche>) request.getAttribute("listado");
