@@ -19,13 +19,13 @@ import es.concesionario.modelo.Negocio;
  * Servlet implementation class ConsultarTodosServlert
  */
 @WebServlet("/ConsultarTodos")
-public class ConsultarTodosServlert extends HttpServlet {
+public class ConsultarTodosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ConsultarTodosServlert() {
+    public ConsultarTodosServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

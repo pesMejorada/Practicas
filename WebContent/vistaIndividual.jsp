@@ -1,58 +1,46 @@
-package es.concesionario.controlador;
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@page import="es.concesionario.modelo.Coche"%>
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Vista Individual</title>
+<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+</head>
+<body>
+<form action="Procesar" method="get">
+ <% Coche coche = (Coche)request.getAttribute("coche"); %>
+<table>
+    <tr>
+      <th>Id</th>
+      <th>Matricula</th>
+      <th>Marca</th>
+      <th>Modelo</th>
+      <th>Color</th>
+      <th>NumCaballos</th>
+      <th>Marchas</th> 
+    </tr>
+   <tr>
+      <td><input type="text" name="id" value="<%=coche.getId() %>" readonly="readonly"/></td>  
+      <td><input type="text" name="matricula" value="<%=coche.getMatricula() %>"/></td>
+      <td><input type="text" name="marca" value="<%=coche.getMarca() %>"/></td>
+      <td><input type="text" name="modelo" value="<%=coche.getModelo() %>"/></td>
+      <td><input type="text" name="color" value="<%=coche.getColor() %>"/></td>
+      <td><input type="text" name="numCaballos" value="<%=coche.getNumCaballos() %>"/></td>
+      <td><input type="checkbox" name="marchas" value=""
+             <%=coche.isMarchas()?"checked='checked'":"" %>/></td>
+  </tr>
+</table>
+ <input class="botones" type="submit" value="Borrar" id="borrar" name="borrar"/>
+ <input class="botones" type="submit" value="Actualizar" id="actualizar" name="actualizar"/>
+</form>
 
-import java.io.IOException;
-import java.util.ArrayList;
+ 
+  <a href="index.html">Ir a inicio</a>
+</body>
+</html>
+      
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import es.concesionario.modelo.Coche;
-import es.concesionario.modelo.Negocio;
-
-
-
-/**
- * Servlet implementation class ConsularServlet
- */
-@WebServlet("/ConsultarMatricula")
-public class ConsultarMatriculaServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ConsultarMatriculaServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String matricula= request.getParameter("matricula");
-		   
-	    Negocio negocio = new Negocio();
-	    ArrayList<Coche> coche = negocio.consultarMatricula(matricula);
-	    
-	    // meter el coche en el request.. uso el metodo setAttribute
-	    request.setAttribute("listado", coche);
-	    // Redirigir hacia la pagina jsp que muestra los datos del coche.
-	    RequestDispatcher rd;
-	    rd=request.getRequestDispatcher("mostrarTodos.jsp");
-	    rd.forward(request, response);
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
-}
+        
