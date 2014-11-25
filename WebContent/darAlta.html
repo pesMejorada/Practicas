@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>DAR ALTA</title>
+<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+</head>
+<body>
+    <form method="get" action="DarAlta" name="darAlta" id="darAlta">
+   <label for="matricula">Matricula:</label> 
+        <input type="text" name="matricula" id="matricula"  required="required" maxlength="6" /><br/>
+        <br/>
+   <label for="marca">Marca:</label>
+        <input type="text" name="marca" id="marca" required="required" /><br/>
+        <br/>
+   <label for="modelo">Modelo:</label>
+        <input type="text" name="modelo" id="modelo" /><br/>
+        <br/>
+   <label for="color">Color:</label>
+        <input type="text" name="color" id="color" /><br/>
+        <br/>
+   <label for="numCaballos">Num Caballos:</label>
+        <input type="number" name="numCaballos" id="numCaballos"  min="100" max="1000" value="100" required="required" step="50"/><br/>
+        <br/>                    
+   <label for="marchas">Marchas:</label>
+        <label for="marchasSi">Si</label> <input type="radio" name="marchas" id="marchasSi" value="marchasSi"/>
+        <label for="marchasNo">No</label> <input type="radio" name="marchas" id="marchasNo" value="marchasNo"/><br/>
+  <input class="botones" type="submit" name="enviar" id="enviar" value="Enviar"/>
+ 
+</form>
+ 
+</body>
+</html>
