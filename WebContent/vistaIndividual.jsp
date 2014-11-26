@@ -28,7 +28,7 @@
       <td><input type="text" name="marca" value="<%=coche.getMarca() %>"/></td>
       <td><input type="text" name="modelo" value="<%=coche.getModelo() %>"/></td>
       <td><input type="text" name="color" value="<%=coche.getColor() %>"/></td>
-      <td><input type="text" name="numCaballos" min="100" max="1000" required="required" step="50" value="<%=coche.getNumCaballos() %>"/></td>
+      <td><input type="number" name="numCaballos" min="100" max="1000" required="required" step="50" value="<%=coche.getNumCaballos() %>"/></td>
       <td><input type="checkbox" name="marchas" value=""
              <%=coche.isMarchas()?"checked='checked'":"" %>/></td>
   </tr>
